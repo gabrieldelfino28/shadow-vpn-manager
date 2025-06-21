@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>VPN Manager | Login</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-fixed-top navbar-dark bg-primary">
+        <div class="container-fluid">
+            <h1 class="navbar-brand">Shadow VPN Manager 👨‍💻</h1>
+        </div>
+    </nav>
+    <div class="container mt-5" th:fragment="content">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <h1 class="text-center mb-4">Login 💻</h1>
+                <form th:action="@{/login}" method="post">
+                    <div class="form-group mb-3">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" class="form-control" placeholder="Username"
+                            required autofocus minlength="3" maxlength="30" />
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Password"
+                            required />
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Login 🚀</button>
+                    <br><br><br>
+                    <div th:if="${param.error}" class="alert alert-warning d-flex align-items-center">
+                        <p class="flex-grow-1 text-center">Invalid username and/or password!</p>
+                    </div>
+                    <div th:if="${param.logout}" class="alert alert-success d-flex align-items-center">
+                        <p class="flex-grow-1 text-center">Successful Logout!</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

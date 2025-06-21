@@ -1,0 +1,16 @@
+br\edu\fatec\shadowvpn\controller\CertificateManagerController.class
+br\edu\fatec\shadowvpn\entity\User.class
+br\edu\fatec\shadowvpn\security\RoleBasedAuthenticationSuccessHandler.class
+br\edu\fatec\shadowvpn\util\Role.class
+br\edu\fatec\shadowvpn\controller\UserController.class
+br\edu\fatec\shadowvpn\service\UserDetailsServiceImpl.class
+br\edu\fatec\shadowvpn\VPNmanagerApplication.class
+br\edu\fatec\shadowvpn\controller\ExportController.class
+br\edu\fatec\shadowvpn\controller\AdminController.class
+br\edu\fatec\shadowvpn\repository\UserRepository.class
+br\edu\fatec\shadowvpn\entity\Certificate.class
+br\edu\fatec\shadowvpn\security\SecurityConfig.class
+br\edu\fatec\shadowvpn\service\UserService.class
+br\edu\fatec\shadowvpn\repository\CertificateRepository.class
+br\edu\fatec\shadowvpn\controller\AuthController.class
+br\edu\fatec\shadowvpn\service\CertificateService.class

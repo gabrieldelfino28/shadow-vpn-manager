@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>VPN Manager | View</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body class="bg-light" th:fragment="layout(content)">
+    <nav class="navbar navbar-expand-lg navbar-fixed-top navbar-dark bg-dark">
+        <div class="container-fluid">
+            <h1 class="navbar-brand">Shadow VPN Manager👨‍💻</h1>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <form th:action="@{/logout}" method="post" style="display: inline;">
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                        <button type="submit" class="nav-link btn btn-link" style="padding: 0;">🚪Log-out</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        <h2>Users</h2>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <a class="btn btn-primary" th:href="@{/admin/users/create}">New User👤</a>
+            <form th:action="@{/admin/users}" method="get" class="flex-grow-1 ms-3">
+                <div class="input-group">
+                    <input type="text" name="search" class="form-control" placeholder="Search by username">
+                    <button type="submit" class="btn btn-outline-secondary">Search</button>
+                </div>
+            </form>
+        </div>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center">Username</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Role</th>
+                    <th class="text-center">Certificates</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.username}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td th:text="${user.firstName + ' ' + user.lastName}"></td>
+                    <td th:text="${user.role}"></td>
+
+                    <td>
+                        <a class="btn btn-sm btn-secondary" th:href="@{/admin/users/{id}/certificates(id=${user.id})}">Link</a>
+                    </td>
+
+                    <td>
+                        <a class="btn btn-sm btn-info" th:href="@{/admin/users/edit/{id}(id=${user.id})}">Edit</a>
+                        <form th:action="@{/admin/users/delete/{id}(id=${user.id})}" method="post"
+                            style="display:inline-block;">
+                            <button class="btn btn-danger btn-sm" th:attr="data-label=${user.username}"
+                                onclick="return confirmRemove(this);">
+                                Remove
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function confirmRemove(button) {
+            const label = button.getAttribute("data-label");
+            return confirm(`Are you sure you want to remove user '${label}'?`);
+        }
+    </script>
+</body>
+
+</html>
