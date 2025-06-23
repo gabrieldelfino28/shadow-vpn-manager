@@ -31,6 +31,8 @@ _________________________________________
 - Scripts em Bash
 - MySQL 8
 - Certificados SSL
+- VirtualBox
+- Linux (Debian 12)
 
 ## Construção de ambiente
 ### Máquina virtual OpenVPNServer
